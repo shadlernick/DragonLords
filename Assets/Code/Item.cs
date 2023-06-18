@@ -1,18 +1,21 @@
 ﻿using System;
 
-public enum ItemType
+namespace Creatures
 {
-    Consumable,
-    PetSummon,
-    Garbage
-}
+    public enum ItemType
+    {
+        Consumable,
+        PetSummon,
+        Garbage
+    }
 
-public interface IItem 
-{
-    public ItemType Type { get; set; }
-}
+    public interface IItem
+    {
+        public ItemType Type { get; set; }
+    }
 
-public class Item : IItem
-{
+    public class Item : IItem
+    {
 
+    }
 }
