@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Immutable;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Creatures
 {
@@ -7,24 +10,33 @@ namespace Creatures
 		public int Id { get; set; }
 		public int OwnerId { get; set; }
 
-		public List<IItem> Items { get; set; }
+		public Dictionary<IItem, int> Items { get; set; }
 
 		private int _capacity;
 
 		public Inventory()
 		{
-
+			_capacity = 50;
+			Items = new Dictionary<IItem, int>();
 		}
 
-		public void AddItem(int itemId, int count)
+		public void AddItem(IItem item, int count)
 		{
-			if (Items.Length == _capacity)
+			if (Items.Count == _capacity)
 				throw new InventoryException();
+
+			Items.Add(item, count);
 		}
 
-		public void RemoveItem();
+		public void RemoveItem(IItem item)
+		{
+			Items.Remove(item);
+		}
 
-		public void Sort();
+		public void Sort()
+		{
+            Items = (Dictionary<IItem, int>)Items.OrderBy(k => k.Key);
+		}
 	}
 
 	public class InventoryException : Exception { }
