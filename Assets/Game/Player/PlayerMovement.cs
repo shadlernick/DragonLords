@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float groundDrag;
 
-    public float jumpForñe;
+    public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
     bool readyToJump;
@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(transform.up * jumpForñe, ForceMode.Impulse);
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 
     private void ResetJump()
