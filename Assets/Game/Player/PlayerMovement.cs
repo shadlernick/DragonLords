@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float groundDrag;
 
-    public float jumpForse;
+    public float jumpForñe;
     public float jumpCooldown;
     public float airMultiplier;
     bool readyToJump;
@@ -90,13 +90,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         // limit velocity if needed
-        if (flatVel.magnitude > moveSpeed)
+        if (flatVelocity.magnitude > moveSpeed)
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            Vector3 limitedVelocity = flatVelocity.normalized * moveSpeed;
+            rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
         }
     }
 
@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(transform.up * jumpForse, ForceMode.Impulse);
+        rb.AddForce(transform.up * jumpForñe, ForceMode.Impulse);
     }
 
     private void ResetJump()

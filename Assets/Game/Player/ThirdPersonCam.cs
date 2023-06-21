@@ -7,7 +7,7 @@ public class ThirdPersonCam : MonoBehaviour
     [Header("References")]
     public Transform orientation;
     public Transform player;
-    public Transform playerObj;
+    public Transform playerObject;
     public Rigidbody rb;
 
     public float rotationSpeed;
@@ -21,17 +21,17 @@ public class ThirdPersonCam : MonoBehaviour
     private void Update()
     {
         // rotate orientation
-        Vector3 vuewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
-        orientation.forward = vuewDir.normalized;
+        Vector3 viewDirection = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
+        orientation.forward = viewDirection.normalized;
 
         // rotate player object
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        Vector3 inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        if(inputDir != Vector3.zero )
+        if(inputDirection != Vector3.zero )
         {
-            playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+            playerObject.forward = Vector3.Slerp(playerObject.forward, inputDirection.normalized, Time.deltaTime * rotationSpeed);
         }
     }
 }
